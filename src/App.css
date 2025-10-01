@@ -1,0 +1,82 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* src/App.css */
+
+/* -------------------------------------------------
+   Clay‑morphic utilities
+   ------------------------------------------------- */
+
+/* A generic soft‑clay container */
+.clay-element {
+  @apply rounded-[18px] bg-white/80 backdrop-blur-sm
+         shadow-[0_4px_6px_rgba(0,0,0,0.08)];
+  /* Inner emboss/shadow for the puffy effect */
+  box-shadow:
+    inset 4px 4px 6px rgba(255,255,255,0.6),
+    inset -4px -4px 6px rgba(0,0,0,0.05);
+}
+
+/* A button that inherits the clay look and adds interaction */
+.clay-button {
+  @apply clay-element transition-all duration-200
+         hover:scale-[1.03] active:scale-[0.97];
+  padding: 0.75rem 1.25rem;   /* comfortable tap target */
+}
+
+/* -------------------------------------------------
+   Global site styles (fonts, background, etc.)
+   ------------------------------------------------- */
+
+html, body {
+  @apply bg-mint-50 text-gray-800 antialiased;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Example of a reusable heading style */
+.h1 {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+
+
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
