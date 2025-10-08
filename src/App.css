@@ -3,6 +3,8 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+
+--leaf-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23000000' fill-opacity='0.06' d='M50 0c13 0 25 10 30 22 5 12 2 27-7 35-9 8-22 9-31 2-9-7-12-20-7-31 5-11 18-18 31-18z'/%3E%3C/svg%3E");
 }
 
 /* src/App.css */
@@ -82,4 +84,26 @@ html, body {
   color: #888;
 }
 
+/* -------------------------------------------------
+   1️⃣  Set the leaf pattern as the background image
+   ------------------------------------------------- */
+/* -------------------------------------------------
+   2️⃣  Animate the background so it drifts like wind
+   ------------------------------------------------- */
+
+
+body {
+  background-color: #f0f8ff; /* Fallback color */
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Leaf.svg/1024px-Leaf.svg.png'); /* Known image */
+  background-repeat: repeat; /* Tile the image */
+  background-size: 120px 120px; /* Size of each tile */
+  animation: leafDrift 30s linear infinite; /* Add animation */
+  min-height: 100vh; /* Ensure it covers the full height */
+  margin: 0; /* Remove default margin */
+}
+
+@keyframes leafDrift {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
 

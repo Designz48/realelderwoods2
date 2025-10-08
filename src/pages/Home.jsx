@@ -22,7 +22,8 @@ const Button = ({ children, className, ...rest }) => (
    ----------------------------------------------------------------- */
 const yauponImages = [
   "/mint3.jpeg",
-
+  "/Elderwoods Tea Yaupon, Elderberry, Hibiscus.jpg",
+  "/freezedryer.jpeg",
 ];
 
 const yauponImages2 = [
@@ -72,11 +73,10 @@ export default function Home() {
               </Link>
             </div>
           </div>
-
           {/* ----- Right column – image placeholder ----- */}
           <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-end">
             <div className="w-45 h-45 bg-mint-200 flex items-center justify-center text-gray-500 rounded-lg shadow-sm">
-	<ImageSlideshow images={yauponImages} interval={5000} />
+	<ImageSlideshow className="w-[600px] h-[725px]" images={yauponImages} interval={5000} />
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function Home() {
           </>
    }
       />
-
+<br /><br /><br />
 {/* ==================== FIRST TWO‑COLUMN BLOCK ====================
           Static image (teabox.gif) on the right side
       =============================================================== */}
@@ -118,11 +118,11 @@ export default function Home() {
               American caffeinated tea that gives a little kick without the buzz.
               It has antioxidants and is a healthy alternative to coffee. As part
               of our original Yaupon dehydrated tea stock, these containers are
-              simple to open, stack, and store.
-            </p>
-	<div className="flex flex-col sm:flex-row gap-4">
+              simple to <br /> open, stack, and store.
+            </p> <br />
+	<div className="flex flex-col gap-4">
       	      <Link to={createPageUrl("Products")}>
-                <Button className="bg-green-100 text-orange-800 px-8 py-3 text-lg font-medium w-full sm:w-auto rounded hover:bg-orange-700 hover:text-white transition">
+                <Button className="items-center bg-green-100 text-orange-800 px-8 py-3 text-lg font-medium w-full sm:w-auto rounded hover:bg-orange-700 hover:text-white transition">
 		Buy Yaupon
                 </Button>
               </Link>
@@ -138,11 +138,10 @@ export default function Home() {
           />
 
         }
-	   />
+	   /><br /><br /><br /><br />
 <div>
 	<h1>Want to know more?</h1>
-	<p>We have our own blog that describes the ins-&-outs of what makes our tea brand different. Including how freezedrying preserves both flavor and nutrition, why peppermint is an underrated super tea for more than an upset stomach, and more tea where that came from!</p>
-	<img className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-end w-45 h-45 bg-mint-200 flex items-center justify-center rounded-lg shadow-lg" src="/mint1" href="elderwoodstea.com" />
+	<p>We have our own blog that describes the ins-&-outs of what makes our tea brand different.<br />Including how freezedrying preserves both flavor and nutrition, why peppermint is an <br /> underrated super tea for more than an upset stomach, and more tea where that came from!</p>
 </div>
 
 
