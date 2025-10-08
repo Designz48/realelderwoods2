@@ -1,79 +1,136 @@
 // src/pages/Home.jsx
-import { Link } from "react-router-dom"
-import { ShoppingBag, Heart } from "lucide-react"
-import { createPageUrl } from "../utils/createPageUrl"
+import React from "react";
+import { Link } from "react-router-dom";
+import { ShoppingBag, Heart } from "lucide-react";
+import { createPageUrl } from "../utils/createPageUrl";
 
-/* -------------------------------------------------
-   Tiny fallback Button component (replace with your own
-   shared <Button> if you already have one)
-   ------------------------------------------------- */
+import TwoColumn from "../components/ui/twocolumn";          // ← your two‑column component
+import ImageSlideshow from "../components/ui/imageslideshow"; // ← carousel component
+
+/* -----------------------------------------------------------------
+   Tiny fallback Button component (replace with your own shared button)
+   ----------------------------------------------------------------- */
 const Button = ({ children, className, ...rest }) => (
   <button className={`clay-button ${className}`} {...rest}>
     {children}
   </button>
-)
+);
+
+/* -----------------------------------------------------------------
+   Image URLs for the Yaupon carousel – they must live in
+   public/images/ (e.g. public/images/yaupon-1.jpg)
+   ----------------------------------------------------------------- */
+const yauponImages = [
+  "/mint3.jpeg",
+  "/mint2.jpeg",
+  "/mint1",
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-mint-50 flex flex-col">
-      {/* -------------------------------------------------
-          Call‑to‑Action – two columns:
-          • left column: left‑aligned text & CTAs
-          • right column: right‑aligned image placeholder,
-            no rounded box, just a plain background area
-         ------------------------------------------------- */}
-      <section className="py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          {/* NOTE: bg-white/50 → bg-transparent */}
-          <div className="clay-element bg-transparent p-12 relative overflow-hidden flex flex-col md:flex-row items-start">
-            {/* ----- Decorative pastel blobs (unchanged) ----- */}
-            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-green-200/30 to-transparent rounded-full -translate-x-16 -translate-y-16" />
-            <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-tl from-purple-200/30 to-transparent rounded-full translate-x-20 translate-y-20" />
+    <div>
+      {/* ==================== HERO / CALL‑TO‑ACTION ==================== */}
+      <section className="backdrop-blur-sm py-12">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center px-6">
+          {/* ----- Left column – text & CTAs ----- */}
+          <div className="w-full md:w-1/2 space-y-8 text-left">
+            {/* Gradient heading */}
+            <h2 className="text-5xl font-bold">
+              <span className="bg-gradient-to-r from-purple-700 to-green-700 bg-clip-text text-transparent md:text-5x1">
+                Pure Herbs,
+              </span>
+              <br />
+              <span className="text-3xl md:text-5xl font-bold text-gray-800">
+                Perfect Flavor
+              </span>
+            </h2>
 
-            {/* ----- Left column – text & CTAs (left‑aligned) ----- */}
-            <div className="w-full md:w-1/2 space-y-8 text-left">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                Ready to experience{" "}
-                <span className="bg-gradient-to-r from-green-700 to-purple-700 bg-clip-text text-transparent">
-                  pure flavor
-                </span>
-                ?
-              </h2>
+            <p className="text-lg text-gray-600 max-w-2xl">
+              Make a cup of natural tea or a culinary treat with our
+              quality freeze‑dried herbs.
+            </p>
 
-              <p className="text-lg text-gray-600 max-w-2xl">
-                Join hundreds of tea enthusiasts who trust Elderwoods Tea for the highest
-                quality freeze‑dried herbs.
-              </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              {/* Shop Now */}
+              <Link to={createPageUrl("Products")}>
+                <Button className="bg-green-100 text-green-800 px-8 py-3 text-lg font-medium w-full sm:w-auto rounded hover:bg-green-700 hover:text-white transition">
+                  <ShoppingBag className="w-5 h-5 mr-2 inline-block" />
+                  Shop Now
+                </Button>
+              </Link>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                {/* Shop Now */}
-                <Link to={createPageUrl("Products")}>
-                  <Button className="bg-green-100 text-green-800 px-8 py-3 text-lg font-medium w-full sm:w-auto">
-                    <ShoppingBag className="w-5 h-5 mr-2 inline-block" />
-                    Shop Now
-                  </Button>
-                </Link>
-
-                {/* Our Story */}
-                <Link to={createPageUrl("About")}>
-                  <Button className="bg-white text-gray-700 px-8 py-3 text-lg w-full sm:w-auto">
-                    <Heart className="w-5 h-5 mr-2 inline-block" />
-                    Our Story
-                  </Button>
-                </Link>
-              </div>
+              {/* Our Story */}
+              <Link to={createPageUrl("About")}>
+                <Button className="bg-white text-gray-700 px-8 py-3 text-lg w-full sm:w-auto rounded hover:bg-gray-100 transition">
+                  <Heart className="w-5 h-5 mr-2 inline-block" />
+                  Our Story
+                </Button>
+              </Link>
             </div>
+          </div>
 
-            {/* ----- Right column – image placeholder (right‑aligned) ----- */}
-            <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-end">
-              {/* Replace this <div> with an <img> when you have the real picture */}
-              <div className="w-64 h-64 bg-mint-200 flex items-center justify-center text-gray-500">
-                Image Placeholder
-              </div>
+          {/* ----- Right column – image placeholder ----- */}
+          <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-end">
+            <div className="w-64 h-64 bg-mint-200 flex items-center justify-center text-gray-500 rounded-lg shadow-sm">
+	<ImageSlideshow images={yauponImages} interval={5000} />
             </div>
           </div>
         </div>
       </section>
-    </div>
-  )
+
+      
+      {/* ==================== SECOND TWO‑COLUMN BLOCK ====================
+          Image slideshow (carousel) on the right side
+      =============================================================== */}
+      <TwoColumn
+        leftContent={<ImageSlideshow images={yauponImages} interval={5000} />
+                  }
+        rightContent={  <>
+            <h2 className="text-3xl font-bold mb-4">Grown good</h2>
+            <p className="text-gray-700">
+              Using organic seeds, soil, and rainwater in raised beds, our herbs are 100% natural and ready-to-eat. By harvesting the leaves and flowers early morning, rinse thoroughly, and freeze immediately, we preserve as much moisture and essential oils from the herbs-- giving you peak flavor.
+	    </p> <br />
+	    <p className="text-gray-700">
+              After freezing, we take the leaves into freezedryer trays where they suck water out at and below 150 degrees without damaging the molecules as dyhydrating does.
+            </p><br />
+	    <p className="text-gray-700">
+              Finally, we take the freezedried leaves and store them in Mylar bags, the most effective at keeping moisture out. However, you needn't worry if bags are left open for awhile since most of our herbs don't accumulate moisture as quickly as others-- like tomatoes. At last, and in only 5 steps, it's your turn to brew these fresh herbs into tea or your favorite treat!
+            </p>
+
+          </>
+   }
+      />
+
+{/* ==================== FIRST TWO‑COLUMN BLOCK ====================
+          Static image (teabox.gif) on the right side
+      =============================================================== */}
+      <TwoColumn
+        leftContent={
+          <>
+            <h2 className="text-3xl font-bold mb-4 text-right">Try Yaupon</h2>
+            <p className="text-gray-700 text-right">
+              Unique packaging, for a unique tea. Yaupon is an indigenous North
+              American caffeinated tea that gives a little kick without the buzz.
+              It has antioxidants and is a healthy alternative to coffee. As part
+              of our original Yaupon dehydrated tea stock, these containers are
+              simple to open, stack, and store.
+            </p>
+          </>
+        }
+        rightContent={
+          <img
+            src="/teabox.gif"
+            alt="Teabox illustration"
+            className="w-full h-full object-cover rounded-lg"
+          />
+        }
+      />
+
+
+
+
+
+
+   </div>
+  );
 }

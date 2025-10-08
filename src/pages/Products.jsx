@@ -1,71 +1,132 @@
-// src/pages/Products.jsx
-import { Leaf } from "lucide-react"
-import { Link } from "react-router-dom"
-import { createPageUrl } from "../utils/createPageUrl"
+import React from "react";
+import { Leaf } from "lucide-react";
+import { Link } from "react-router-dom";
+import { createPageUrl } from "../utils/createPageUrl";
+import ImageCarousel from "../components/ui/imagecarousel"; // <-- carousel component
 
+/* ------------------------------------------------------------------
+   Sample product data – each product now carries an `images` array.
+   Replace the URLs with the real image locations you have.
+------------------------------------------------------------------ */
 const productList = [
   {
     id: 1,
-    name: "Mint Leaves (Freeze‑Dried)",
-    description: "Bright, refreshing mint perfect for teas and desserts.",
-    price: "$9.99",
+    name: "Spearmint Leaves (Freeze‑Dried)",
+    description:
+      "10 oz bright, refreshing mint – perfect for teas and desserts.",
+    price: 9.99,
     color: "mint",
+    images: [
+      "/mint3.jpeg",
+	"/mint4.jpeg",
+	"/mint6.jpeg",
+	"/mint7.jpeg",
+    ],
   },
   {
     id: 2,
     name: "Lavender Buds (Freeze‑Dried)",
-    description: "Calming lavender for infusions and culinary creations.",
-    price: "$11.99",
+    description:
+      "10 oz calming lavender – great for infusions and culinary creations.",
+    price: 11.99,
     color: "lavender",
+    images: [
+      "/lavandar.jpg",
+    ],
   },
   {
     id: 3,
-    name: "Rosemary Sprigs (Freeze‑Dried)",
-    description: "Robust rosemary ideal for savory dishes and marinades.",
-    price: "$10.49",
+    name: "Mix of All (Freeze‑Dried)",
+    description:
+      "10 oz blend of lavender & spearmint – heavenly treats in one bag.",
+    price: 10.49,
     color: "green",
+    images: [
+      "/onetwo.jpg",
+    ],
   },
-]
+];
 
+/* ------------------------------------------------------------------
+   Stub for adding a product to the cart.
+   Replace this with your real cart context / Redux dispatch later.
+------------------------------------------------------------------ */
+function addToCart(product) {
+  // Example: store in localStorage (same format Cart.jsx expects)
+  const stored = localStorage.getItem("cart");
+  const current = stored ? JSON.parse(stored) : [];
+
+  // If the product already exists, just bump the quantity
+  const existing = current.find((i) => i.id === product.id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    current.push({ ...product, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(current));
+  alert(`${product.name} added to cart!`);
+}
+
+/* ------------------------------------------------------------------ */
 export default function Products() {
   return (
-    <section className="max-w-5xl mx-auto my-12 space-y-8">
-      <header className="clay-element p-6 text-center">
-        <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-mint-700 to-lavender-700">
-          Our Products
+    <section className="page">
+      {/* ------- Page Header with Gradient Title ------- */}
+      <header className="mb-8 text-center">
+        <h1 className="text-4xl font-bold">
+          <span className="bg-gradient-to-r from-purple-700 to-green-700 bg-clip-text text-transparent">
+            Our Products
+          </span>
         </h1>
-        <p className="text-gray-600 mt-2">
-          Premium freeze‑dried herbs, packaged in eco‑friendly paper bags.
+        <p className="mt-2 text-lg text-gray-600">
+          Premium freeze‑dried herbs, packaged in Mylar‑sealed bags to keep out
+          moisture.
         </p>
       </header>
 
+      {/* ------- Product Grid ------- */}
       <div className="grid md:grid-cols-3 gap-6">
-        {productList.map((p) => (
+        {productList.map((product) => (
           <article
-            key={p.id}
-            className="clay-element p-6 flex flex-col justify-between bg-white/70 backdrop-blur-sm"
+            key={product.id}
+            className="clay-element p-6 flex flex-col justify-between bg-white/70 backdrop-blur-sm rounded-lg"
           >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="clay-element bg-gradient-to-br from-mint-200 to-lavender-200 p-2">
-                <Leaf className="w-5 h-5 text-mint-700" />
-              </div>
-              <h2 className="text-xl font-semibold">{p.name}</h2>
-            </div>
+            {/* ---------- Image carousel ---------- */}
+            <ImageCarousel images={product.images} />
 
-            <p className="text-gray-700 flex-grow">{p.description}</p>
+            {/* ---------- Title ---------- */}
+            <h3 className="mt-4 text-xl font-semibold">{product.name}</h3>
+ 
+            {/* ---------- Description ---------- */}
+            <p className="mt-2 text-gray-600 flex-grow">{product.description}</p>
 
-            <div className="mt-4 flex items-center justify-between">
-              <span className="text-lg font-bold">{p.price}</span>
-              <Link
-                to={createPageUrl("Contact")}
-                className="clay-button bg-mint-200 hover:bg-mint-300 px-4 py-2 text-sm"
-              >
-                Order
-              </Link>
-            </div>
+            {/* ---------- Price ---------- */}
+            <p className="mt-2 font-bold text-green-800">
+              ${product.price.toFixed(2)}
+            </p>
+
+            {/* ---------- Add‑to‑Cart button ---------- */}
+            <button
+              onClick={() => addToCart(product)}
+              className="clay-button mt-3 bg-green-100 text-green py-2 px-6 rounded hover:bg-green-700 transition hover:text-white"
+            >
+              Add to Cart
+            </button>
           </article>
         ))}
       </div>
+
+      {/* ------- Optional link back to home ------- */}
+      <div className="mt-8 text-center">
+        <Link
+          to={createPageUrl("Home")}
+          className="inline-flex items-center text-green-600 hover:underline"
+        >
+          <Leaf className="mr-1 w-5 h-5" />
+          Back to Home
+        </Link>
+      </div>
     </section>
-  )
+  );
 }

@@ -17,6 +17,7 @@ export function createPageUrl(page) {
     about: '/about',
     contact: '/contact',
     legal: '/legal',
+    cart: '/cart',
   }
 
   // Fallback to '/' if the page name isn’t recognised

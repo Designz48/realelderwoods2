@@ -10,20 +10,14 @@ export default function Contact() {
         Get in Touch
       </h1>
 
-      <div className="space-y-4">
+      <div className="space-y-4 items-center text-center flex flex-col items-center justify-center items-center">
         <div className="flex items-center gap-3">
           <Mail className="w-5 h-5 text-lavender-700" />
-          <span className="text-gray-800">support@elderwoodstea.com</span>
+          <span className="text-gray-800">elderwoodstea@gmail.com</span>
         </div>
-
-        <div className="flex items-center gap-3">
-          <Phone className="w-5 h-5 text-lavender-700" />
-          <span className="text-gray-800">+1 (555) 123‑4567</span>
-        </div>
-
         <div className="flex items-center gap-3">
           <MapPin className="w-5 h-5 text-lavender-700" />
-          <span className="text-gray-800">123 Herbal Way, Portland, OR 97201</span>
+          <span className="text-gray-800">PO Box 1887 Pittsboro NC. 27312</span>
         </div>
       </div>
 

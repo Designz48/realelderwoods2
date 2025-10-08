@@ -13,7 +13,7 @@
 
 /* A generic soft‑clay container */
 .clay-element {
-  @apply rounded-[18px] bg-white/80 backdrop-blur-sm
+  @apply rounded-[20px] bg-white/80 backdrop-blur-sm
          shadow-[0_4px_6px_rgba(0,0,0,0.08)];
   /* Inner emboss/shadow for the puffy effect */
   box-shadow:
@@ -23,9 +23,10 @@
 
 /* A button that inherits the clay look and adds interaction */
 .clay-button {
-  @apply clay-element transition-all duration-200
-         hover:scale-[1.03] active:scale-[0.97];
-  padding: 0.75rem 1.25rem;   /* comfortable tap target */
+  @apply shadow-lg transition-all duration-200
+         hover:scale-[1.09] active:scale-[0.97];
+  padding: 0.85rem 1.25rem; 
+/* comfortable tap target */
 }
 
 /* -------------------------------------------------
@@ -80,3 +81,5 @@ html, body {
 .read-the-docs {
   color: #888;
 }
+
+

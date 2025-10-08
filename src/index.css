@@ -9,7 +9,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #E6EAE5;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -40,7 +40,7 @@
 
 /* Pastel palette (custom Tailwind colors) */
 @layer utilities {
-  .bg-mint { @apply bg-[#DFFFD6]; }
+  .bg-mint { @apply bg-[#E6EAE5]; }
   .bg-lavender { @apply bg-[#E6E6FA]; }
   .bg-babyblue { @apply bg-[#DDEEFF]; }
 }
@@ -102,3 +102,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+

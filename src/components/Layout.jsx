@@ -1,9 +1,8 @@
 // src/components/Layout.jsx
-import React, { useEffect } from "react"
 import { Leaf, Mail, Instagram, Facebook } from "lucide-react"
 import { Link, useLocation } from "react-router-dom"
 import { createPageUrl } from "../utils/createPageUrl"
-
+import { ShoppingBag } from "lucide-react";   // ← add this line
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation()
@@ -13,13 +12,13 @@ export default function Layout({ children, currentPageName }) {
     { name: "Products", page: "Products", color: "purple" },
     { name: "About", page: "About", color: "blue" },
     { name: "Contact", page: "Contact", color: "green" },
-    { name: "Legal", page: "Legal", color: "purple" },
+    { name: <ShoppingBag className="w-5 h-5 inline-block" />, page: "Cart", color: "blue" },
   ]
 
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}
-      <nav className="clay-element bg-white/70 backdrop-blur-sm mx-4 mt-4 mb-8 sticky top-4 z-50">
+      <nav className="sticky top-2 z-20 bg-white/90 shadow-lg mx-2 mt-2 mb-4 rounded-[25px]">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link to={createPageUrl("Home")} className="flex items-center gap-3 group">
