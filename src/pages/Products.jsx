@@ -45,6 +45,66 @@ const productList = [
       "/onetwo.jpg",
     ],
   },
+  {
+    id: 4,
+    name: "Yaupon Elderberry & Hibiscus",
+    description:
+      "3 oz 12-servings blend with yaupon offers an earthy balance with elderberry and hibiscus combine for a satisfying tart and tangy sweetness. The combo provides triple immune boosting while detoxifying the body.",
+    price: 10.49,
+    color: "purple",
+    images: [
+      "/Mantera Tea Tin WEB-Hibiscus.png",
+"/Elderwoods Tea Yaupon, Elderberry, Hibiscus.jpg",
+"/Yaupon, Elderberry, and Hibiscus Circle.png",
+"/Elderwoods Mantera Collection Tea Sell Sheet.jpg",
+"/Elderwoods Tea Company Front Page.jpg",
+
+    ],
+  },
+{
+    id: 4,
+    name: "Yaupon Lemonbalm & Lemongrass",
+    description:
+      "3 oz 12-servings blend of a Coastal Carolina tradition that uplifts your mood and soothes the digestive system. The phytochemicals fight fatigue and boost the immune system, leading to a great alternative to coffee.",
+    price: 10.49,
+    color: "purple",
+    images: [
+      "/Mantera Tea Tin WEB-Lemonbalm.png",
+"/Yaupon Lemonbalm and Lemongrass.png",
+"/Elderwoods Mantera Collection Tea Sell Sheet.jpg",
+"/Elderwoods Tea Company Front Page.jpg",
+    ],
+  },
+{
+    id: 4,
+    name: "Yaupon Sage & Lavender",
+    description:
+      "3 oz 12-servings blend of soothing sage and calming lavendar to form a robust tea that clears the mind. Promoting relaxation while having the caffeine in yaupon helps a stressful workday be easier to handle.",
+    price: 10.49,
+    color: "purple",
+    images: [
+      "/Mantera Tea Tin WEB-Lavender.png",
+"/Yaupon Sage and Lavender Circle.png",
+"/Elderwoods Mantera Collection Tea Sell Sheet.jpg",
+"/Elderwoods Tea Company Front Page.jpg",
+    ],
+  },
+{
+    id: 4,
+    name: "Yaupon Tulsi, Anise Hyssop, & Blackberry Leaf",
+    description:
+      "3 oz 12-servings blend that's full-bodied aromatic and grounding. Plentiful in antioxidants and anti-stress agents. Tulsi basil is known for its healing properties, unique taste, and ability to soothe anxious nerves.",
+    price: 10.49,
+    color: "purple",
+    images: [
+      "/Mantera Tea Tin WEB-Anise.png",
+"/Tulsi Circle.png",
+"/Elderwoods Mantera Collection Tea Sell Sheet.jpg",
+"/Elderwoods Tea Company Front Page.jpg",
+    ],
+  },
+
+
 ];
 
 /* ------------------------------------------------------------------
@@ -75,7 +135,7 @@ export default function Products() {
       {/* ------- Page Header with Gradient Title ------- */}
       <header className="mb-8 text-center">
         <h1 className="text-4xl font-bold">
-          <span className="bg-gradient-to-r from-purple-700 to-green-700 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-purple-700 to-green-700 bg-clip-text text-transparent"> <br />
             Our Products
           </span>
         </h1>

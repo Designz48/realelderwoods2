@@ -18,8 +18,8 @@ export default function Layout({ children, currentPageName }) {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}
-      <nav className="sticky top-2 z-20 bg-white/90 shadow-lg mx-2 mt-2 mb-4 rounded-[25px]">
-        <div className="max-w-6xl mx-auto px-6 py-4">
+      <nav className="sticky top-2 z-20 bg-white/90 shadow-lg mx-2 mt-1 mb-1 rounded-[25px]">
+        <div className="max-w-8xl mx-auto px-1 py-4">
           <div className="flex items-center justify-between">
             <Link to={createPageUrl("Home")} className="flex items-center gap-3 group">
               <div className="clay-element bg-gradient-to-br from-green-200 to-purple-200 p-3">
@@ -55,7 +55,7 @@ export default function Layout({ children, currentPageName }) {
       </nav>
 
       {/* Main Content */}
-      <main className="flex-1 min-h-screen px-4">{children}</main>
+      <main className="flex-1 min-h-screen px-1">{children}</main>
 
       {/* Footer */}
       <footer className="clay-element bg-white/60 backdrop-blur-sm mx-4 mt-16 mb-4">

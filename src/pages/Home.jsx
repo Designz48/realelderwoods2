@@ -22,6 +22,10 @@ const Button = ({ children, className, ...rest }) => (
    ----------------------------------------------------------------- */
 const yauponImages = [
   "/mint3.jpeg",
+
+];
+
+const yauponImages2 = [
   "/mint2.jpeg",
   "/mint1",
 ];
@@ -71,19 +75,20 @@ export default function Home() {
 
           {/* ----- Right column – image placeholder ----- */}
           <div className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-end">
-            <div className="w-64 h-64 bg-mint-200 flex items-center justify-center text-gray-500 rounded-lg shadow-sm">
+            <div className="w-45 h-45 bg-mint-200 flex items-center justify-center text-gray-500 rounded-lg shadow-sm">
 	<ImageSlideshow images={yauponImages} interval={5000} />
             </div>
           </div>
         </div>
       </section>
 
-      
-      {/* ==================== SECOND TWO‑COLUMN BLOCK ====================
+
+
+			{/* ==================== SECOND TWO‑COLUMN BLOCK ====================
           Image slideshow (carousel) on the right side
       =============================================================== */}
       <TwoColumn
-        leftContent={<ImageSlideshow images={yauponImages} interval={5000} />
+        leftContent={<ImageSlideshow images={yauponImages2} interval={5000} />
                   }
         rightContent={  <>
             <h2 className="text-3xl font-bold mb-4">Grown good</h2>
@@ -107,14 +112,22 @@ export default function Home() {
       <TwoColumn
         leftContent={
           <>
-            <h2 className="text-3xl font-bold mb-4 text-right">Try Yaupon</h2>
-            <p className="text-gray-700 text-right">
+            <h2 className="text-3xl font-bold mb-4 text-center">Try Yaupon</h2>
+            <p className="text-gray-700 text-center">
               Unique packaging, for a unique tea. Yaupon is an indigenous North
               American caffeinated tea that gives a little kick without the buzz.
               It has antioxidants and is a healthy alternative to coffee. As part
               of our original Yaupon dehydrated tea stock, these containers are
               simple to open, stack, and store.
             </p>
+	<div className="flex flex-col sm:flex-row gap-4">
+      	      <Link to={createPageUrl("Products")}>
+                <Button className="bg-green-100 text-orange-800 px-8 py-3 text-lg font-medium w-full sm:w-auto rounded hover:bg-orange-700 hover:text-white transition">
+		Buy Yaupon
+                </Button>
+              </Link>
+	</div>
+
           </>
         }
         rightContent={
@@ -123,14 +136,19 @@ export default function Home() {
             alt="Teabox illustration"
             className="w-full h-full object-cover rounded-lg"
           />
+
         }
-      />
+	   />
+<div>
+	<h1>Want to know more?</h1>
+	<p>We have our own blog that describes the ins-&-outs of what makes our tea brand different. Including how freezedrying preserves both flavor and nutrition, why peppermint is an underrated super tea for more than an upset stomach, and more tea where that came from!</p>
+	<img className="w-full md:w-1/2 mt-8 md:mt-0 flex justify-end w-45 h-45 bg-mint-200 flex items-center justify-center rounded-lg shadow-lg" src="/mint1" href="elderwoodstea.com" />
+</div>
 
 
 
 
 
-
-   </div>
+     </div>
   );
 }
