@@ -15,6 +15,7 @@ export default function Layout({ children, currentPageName }) {
     { name: <ShoppingBag className="w-5 h-5 inline-block" />, page: "Cart", color: "blue" },
   ]
 
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}
@@ -96,11 +97,11 @@ export default function Layout({ children, currentPageName }) {
             <div>
               <h4 className="font-semibold text-gray-800 mb-4">Connect With Us</h4>
               <div className="flex gap-3">
-                <a href="#" className="clay-button bg-green-100 hover:bg-green-200 p-3 block">
-                  <Instagram className="w-4 h-4 text-green-700" />
+                <a href="https://biofarm.org" className="clay-button bg-green-100 hover:bg-green-200 p-3 block">
+                 Biofarm
                 </a>
                 <a href="#" className="clay-button bg-blue-100 hover:bg-blue-200 p-3 block">
-                  <Facebook className="w-4 h-4 text-blue-700" />
+                  <Leaf className="w-4 h-4 text-blue-700" />
                 </a>
                 <Link to={createPageUrl("Contact")} className="clay-button bg-purple-100 hover:bg-purple-200 p-3 block">
                   <Mail className="w-4 h-4 text-purple-700" />
