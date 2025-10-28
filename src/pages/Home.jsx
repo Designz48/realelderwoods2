@@ -54,7 +54,12 @@ export default function Home() {
               Make a cup of natural tea or a culinary treat with our
               quality freeze‑dried herbs.
             </p>
-
+<section className="clay-element" >
+	<div>
+		<h1 className="text-3xl font-bold">We're just getting started!</h1>
+		<p className="text-lg text-gray-600 max-w-2xl">Having had some unexpected traffic to our website, our products are ready but are checkout isn't at the moment! This will be resolved in a week, for now please check back in a few days for our Preorder form so you can stay in the know and get a special deal (hint: it's a tast-test). Thanks for visiting :)</p>
+		</div>
+</section>
             <div className="flex flex-col sm:flex-row gap-4">
               {/* Shop Now */}
               <Link to={createPageUrl("Products")}>
@@ -82,12 +87,7 @@ export default function Home() {
         </div>
       </section>
 
-<section className="clay-element" >
-	<div>
-		<h1>We're just getting started!</h1>
-		<p>Having had some unexpected traffic to our website, our products are ready but are checkout isn't at the moment! This will be resolved in a week, for now please check back in a few days for our Preorder form so you can stay in the know and get a special deal (hint: it's a tast-test). Thanks for visiting :)</p>
-		</div>
-</section>
+
 
 			{/* ==================== SECOND TWO‑COLUMN BLOCK ====================
           Image slideshow (carousel) on the right side
