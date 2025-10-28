@@ -1,19 +1,37 @@
 // src/api/paymentApi.js
-// -------------------------------------------------------------------
-// Placeholder functions – replace with real fetch calls when you’re ready.
-// -------------------------------------------------------------------
-export async function createPaypalOrder(totalUsd) {
-  // TODO: call your backend → POST /api/paypal { amount: totalUsd }
-  // For now just return a dummy URL.
-  return Promise.resolve("https://example.com/paypal-placeholder");
-}
+// -------------------------------------------------
+// Example of a clean helper – keep only what you need
+// -------------------------------------------------
+export async function createOrder(items) {
+  // Calculate the grand total (USD)
+  const total = items.reduce(
+    (sum, i) => sum + i.unit_amount * i.quantity,
+    0
+  );
 
-export async function createStripeSession(totalUsd) {
-  // TODO: call your backend → POST /api/stripe { amount: totalUsd }
-  return Promise.resolve("https://example.com/stripe-placeholder");
-}
+  // Build the purchase_units payload for PayPal
+  const purchaseUnits = [
+    {
+      amount: {
+        currency_code: "USD",
+        value: total.toFixed(2),
+        breakdown: {
+          item_total: {
+            currency_code: "USD",
+            value: total.toFixed(2),
+          },
+        },
+      },
+      items: items.map((i) => ({
+        name: i.name,
+        unit_amount: {
+          currency_code: "USD",
+          value: i.unit_amount.toFixed(2),
+        },
+        quantity: `${i.quantity}`,
+      })),
+    },
+  ];
 
-export async function createSquarePayment(totalUsd) {
-  // TODO: call your backend → POST /api/square { amount: totalUsd }
-  return Promise.resolve("https://example.com/square-placeholder");
+  // … rest of the function unchanged …
 }

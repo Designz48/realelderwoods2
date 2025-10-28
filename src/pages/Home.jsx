@@ -82,7 +82,12 @@ export default function Home() {
         </div>
       </section>
 
-
+<section className="clay-element" >
+	<div>
+		<h1>We're just getting started!</h1>
+		<p>Having had some unexpected traffic to our website, our products are ready but are checkout isn't at the moment! This will be resolved in a week, for now please check back in a few days for our Preorder form so you can stay in the know and get a special deal (hint: it's a tast-test). Thanks for visiting :)</p>
+		</div>
+</section>
 
 			{/* ==================== SECOND TWO‑COLUMN BLOCK ====================
           Image slideshow (carousel) on the right side
@@ -91,7 +96,7 @@ export default function Home() {
         leftContent={<ImageSlideshow images={yauponImages2} interval={5000} />
                   }
         rightContent={  <>
-            <h2 className="text-3xl font-bold mb-4">Grown good</h2>
+            <h2 className="text-3xl font-bold mb-4">Sustainably grown</h2>
             <p className="text-gray-700">
               Using organic seeds, soil, and rainwater in raised beds, our herbs are 100% natural and ready-to-eat. By harvesting the leaves and flowers early morning, rinse thoroughly, and freeze immediately, we preserve as much moisture and essential oils from the herbs-- giving you peak flavor.
 	    </p> <br />
@@ -106,6 +111,8 @@ export default function Home() {
    }
       />
 <br /><br /><br />
+
+
 {/* ==================== FIRST TWO‑COLUMN BLOCK ====================
           Static image (teabox.gif) on the right side
       =============================================================== */}
@@ -139,15 +146,38 @@ export default function Home() {
 
         }
 	   /><br /><br /><br /><br />
+
+
+      <TwoColumn
+        leftContent={
+          <img
+            src="/teabag.gif"
+            alt="Teabox illustration"
+            className="w-full h-full object-cover rounded-lg"
+          />
+        }
+        rightContent={
+         <>
+            <h2 className="text-3xl font-bold mb-4 text-center">Easy Packaging</h2>
+            <p className="text-gray-700 text-center">
+              Unique packaging, for a unique tea. Yaupon is an indigenous North
+              American caffeinated tea that gives a little kick without the buzz.
+              It has antioxidants and is a healthy alternative to coffee. As part
+              of our original Yaupon dehydrated tea stock, these containers are
+              simple to open, stack, and store.
+            </p> <br />
+
+          </>
+
+        }
+	   /><br /><br /><br /><br />
+
 <div>
 	<h1>Want to know more?</h1>
 	<p>We have our own blog that describes the ins-&-outs of what makes our tea brand different.<br />Including how freezedrying preserves both flavor and nutrition, why peppermint is an <br /> underrated super tea for more than an upset stomach, and more tea where that came from!</p>
 </div>
 
 
-
-
-
      </div>
   );
-}
+} 

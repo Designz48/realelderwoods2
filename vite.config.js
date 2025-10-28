@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-
+/* eslint-env node */
 // Optional: a simple alias so you can write "@/utils" instead of "../../utils"
 const alias = {
   find: '@/',

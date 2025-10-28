@@ -6,8 +6,10 @@ import Contact from './pages/Contact.jsx'
 import Legal from './pages/Legal.jsx'
 import Cart from './pages/Cart.jsx'
 import { Routes, Route } from 'react-router-dom'
-
-
+import Blog from "./pages/blog/Blog";          // <-- new
+import Article from "./pages/blog/Article";
+import Checkout from "./pages/Checkout";
+import BlogPost from "./pages/blog/BlogPost.jsx";
 
 export default function App() {
   return (
@@ -19,6 +21,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/legal" element={<Legal />} />
 	<Route path="/cart" element={<Cart />} />
+	<Route path="/blog" element={<Blog />} />
       </Routes>
     </Layout>
   )

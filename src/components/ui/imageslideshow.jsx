@@ -1,43 +1,71 @@
 // src/components/ui/ImageSlideshow.jsx
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+/**
+ * Props
+ *   images   – array of image URLs (required)
+ *   interval – milliseconds between automatic slides (default 4000)
+ *   className – optional extra Tailwind classes the caller wants to add
+ */
 export default function ImageSlideshow({
   images = [],
   interval = 4000,
-  className = "",          // <-- new prop
+  className = "",
 }) {
   const [idx, setIdx] = useState(0);
   const timerRef = useRef(null);
 
-  // ------------------------------------------------------------
-  // Auto‑advance timer (unchanged)
-  // ------------------------------------------------------------
-  useEffect(() => {
-    startTimer();
-    return () => clearTimer();
-  }, [idx, images]);
+  /* ---------------------------------------------------------
+     Timer helpers – memoised so their identity only changes
+     when `interval` or `images.length` changes.
+     --------------------------------------------------------- */
+  const clearTimer = useCallback(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  }, []); // never changes – no deps needed
 
-  const startTimer = () => {
-    clearTimer();
+  const startTimer = useCallback(() => {
+    // If there are no images we don’t start a timer at all
+    if (!images.length) return;
+
+    clearTimer(); // make sure any previous timer is gone
     timerRef.current = setTimeout(() => {
       setIdx((i) => (i + 1) % images.length);
     }, interval);
-  };
-  const clearTimer = () => clearTimeout(timerRef.current);
+  }, [clearTimer, images.length, interval]); // <-- deps
 
-  // ------------------------------------------------------------
-  // Manual navigation
-  // ------------------------------------------------------------
-  const prev = () => setIdx((i) => (i === 0 ? images.length - 1 : i - 1));
+  /* ---------------------------------------------------------
+     Effect that (re)starts the auto‑advance timer whenever
+     the slide index, the image list, or the interval changes.
+     --------------------------------------------------------- */
+  useEffect(() => {
+    startTimer();               // kick off the timer
+    return () => clearTimer();  // clean up on unmount or when deps change
+  }, [startTimer, clearTimer]); // <-- both functions are stable thanks to useCallback
+
+  /* ---------------------------------------------------------
+     Manual navigation helpers (they don’t need memoisation)
+     --------------------------------------------------------- */
+  const prev = () =>
+    setIdx((i) => (i === 0 ? images.length - 1 : i - 1));
+
   const next = () => setIdx((i) => (i + 1) % images.length);
 
+  /* ---------------------------------------------------------
+     Guard – if the caller passes an empty array we render nothing.
+     --------------------------------------------------------- */
   if (!images.length) return null;
 
+  /* ---------------------------------------------------------
+     Render
+     --------------------------------------------------------- */
   return (
     <div
       /* Merge the caller‑provided className with the defaults */
-      className={`relative w-full overflow-hidden rounded-md ${className}`}
+      className={`relative w-full overflow-hidden rounded-lg ${className}`}
       onMouseEnter={clearTimer}
       onMouseLeave={startTimer}
     >

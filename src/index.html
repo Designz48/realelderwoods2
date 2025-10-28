@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Elderwoods Tea – PayPal Checkout Demo</title>
+
+  <!-- 1️⃣  Load the PayPal JavaScript SDK -->
+  <!--  client-id = your PayPal client ID (sandbox or live) -->
+  <!--  components = "buttons" – we only need the button UI -->
+  <!--  currency   = USD (change if you price in another currency) -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AWdXFMVRSLr-qGohVBQO74Ahjn4GvjOJsH2wFHOrSWf3jpoFt0ih0DvAKREzYuFA2Ou19GcqAxx9f2VY&components=buttons&currency=USD"></script>
+
+  <!-- Some very light styling – optional -->
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; }
+    #paypal-button-container { margin-top: 2rem; }
+  </style>
+</head>
+
+<body>
+  <h1>Elderwoods Tea – Checkout</h1>
+  <p>
+    Choose a product, click the PayPal button, and you’ll be taken to the
+    secure PayPal checkout page.
+  </p>
+
+  <!-- 2️⃣  This empty div is where the PayPal button will be rendered -->
+  <div id="paypal-button-container"></div>
+
+  <!-- 3️⃣  Load our custom client‑side script -->
+  <script src="./app.js"></script>
+</body>
+</html>

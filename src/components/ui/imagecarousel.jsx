@@ -13,7 +13,7 @@ export default function ImageCarousel({ images = [] }) {
   const next = () => setIndex(i => (i === images.length - 1 ? 0 : i + 1));
 
   return (
-    <div className="relative w-full h-48 overflow-hidden rounded-md">
+    <div className="relative w-full h-48 overflow-hidden rounded-lg">
       <img
         src={images[index]}
         alt={`Slide ${index + 1}`}

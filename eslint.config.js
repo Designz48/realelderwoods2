@@ -25,5 +25,21 @@ export default defineConfig([
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
+
+// ----------- OVERRIDES FOR NODE‑ONLY FILES ------------
+  overrides: [
+    {
+      files: ["index.js", "vite.config.js", "src/api/**/*.js"],
+      env: {
+        node: true,          // <-- tells ESLint that `process` etc. exist
+        commonjs: true,
+      },
+
+module.exports = {
+  // …existing config…
+  globals: {
+    paypal: "readonly", // tells ESLint that `paypal` exists globally
+  },
+};
   },
 ])
